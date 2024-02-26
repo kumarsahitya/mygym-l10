@@ -28,6 +28,18 @@
                         </x-nav-link>
                     </div>
                 @endcan
+                @can('book-class')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('booking.create')" :active="request()->routeIs('booking.create')">
+                            {{ __('Book a Class') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('booking.index')" :active="request()->routeIs('booking.index')">
+                            {{ __('Upcoming Classes') }}
+                        </x-nav-link>
+                    </div>
+                @endcan
             </div>
 
             <!-- Settings Dropdown -->
@@ -87,6 +99,14 @@
                     {{ __('Schedule a Class') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
+                        {{ __('Upcoming Classes') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('book-class')
+                <x-responsive-nav-link :href="route('booking.create')" :active="request()->routeIs('booking.create')">
+                    {{ __('Book a Class') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('booking.index')" :active="request()->routeIs('booking.index')">
                         {{ __('Upcoming Classes') }}
                 </x-responsive-nav-link>
             @endcan
